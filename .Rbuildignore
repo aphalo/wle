@@ -2,3 +2,4 @@
 ^\.Rproj\.user$
 build-binary-from-source.sh
 .gitignore
+.github
