@@ -1,0 +1,110 @@
+Library wle
+===========
+Version 0.9-9, 2013/12/10
+Fixed several problems to avoid WARNING and NOTE with last versions of R 
+
+Version 0.9-7, 2012/10/15 
+Removed several unnecessary code in src folder.
+
+Version 0.9-6, 2012/10/15
+Fixed a bug in mle.cv and wle.cv
+Removed several unnecessary code in src folder.
+Functions now use R number generators, so set.seed should works with them.
+The Anscombe residual function (residuals.anscombe) is renamed to residualsAnscombe 
+wle.negativebinomial function is introduced
+
+Version 0.9-5, 2010/09/30
+Now mle.cv and wle.cv use a fixed seed in the fortran code.
+Now wle.aic and wle.cp report all the values with NA in case the procedure does not converge for a specific submodel.
+
+Version 0.9-4, 2010/02/09
+Fix a bug in wle.wrappednormal, the argument 'alpha' was not used.
+Fix a small bugs in print.wle.t.test and in wmme.gamma function
+Fix a bug in wle.fracdiff function.
+Fix bugs in mle.stepwise and wle.stepwise.
+Fix a problem in wle.poisson and wle.binomial related to delta=Inf.
+Function wle.gamma report the smoothing parameter bw.
+Introduce all the necessary infrastructure for the GLM robust estimation and inference they are not working properly yet.
+
+Version 0.9-3, 2006/08/10
+Rewrite functions wle.vonmises, wle.wrappednormal so that they can work with new version (0-3.5) of circular package. Added functions mde.vonmises and mde.wrappednormal. 
+
+Version 0.9-2, 2006/02/13
+Fix minor typo in wle.fracdiff.Rd and in wle.var.test.Rd. Rewrite some part of wle.vonmises.R and wle.wrappednormal.R since there were a problem on looking for mutiple roots.
+
+Version 0.9-1, 2005/12/6
+Set up a NAMESPACE file.
+Functions wle.wrappednormal and wle.vonmises use atan2 call instead of atan. mle.aic has a new argument 'se' so that standard errors are reported for the parameters of each submodel. wle.fracdiff and related functions are partialy rewritten.
+
+Version 0.9, 2005/04/16
+This version should works under gcc-4.0 too. 
+Many fortran sources are removed since already included in R (blas functions)
+Function qrgnin.f is modified by Prof. B. Ripley so that it does not use entry point.
+
+Version 0.8-1, 2005/04/10
+Fixed bugs in wlestepwise.f and mlestepwise.f
+The calls to the packages ts and ctest are removed.
+The function wle.aic.ar (and its summaries) is added.
+Add the dataset rocky
+
+Version 0.8,   2004/10/05
+Fixed file wle.lm.summaries.Rd
+
+Version 0.7-9, 2004/01/14
+Fixed documentation for print.wle.vonmises, print.wle.wrappednormal and print.mle.stepwise.
+
+Version 0.7-8, 2003/12/23
+Fixed problems in weights.wle.lm and print.wle.t.test. Some changes in wle.ar and wle.fracdiff.
+
+Version 0.7-7, 2003/11/18
+Fixed a typo in the documentation of wle.normal.mixture function. 
+
+Version 0.7-6, 2003/10/28
+Fixed a problem in print method for functions wle.lm, wle.cp, wle.aic, wle.stepwise, wle.cv, mle.cp, mle.aic, mle.stepwise and wle.cv. Add functions wle.vonmises and wle.wrappednormal. Fix a bug in summary.wle.cp, and summary.mle.cp. Fix a bug in plot.wle.cp and plot.mle.cp 
+
+Version 0.7-5, 2003/04/17
+Fixed a bug in wle.var.test. Small modification in mleaic.f code. Now plot.wle.lm as several new arguments: which, which.main, roots, col, ...
+
+Version 0.7-4, 2003/03/04
+Fixed problems in wle.gamma, the function wle.riunif is removed, wle.ar and wle.fracdiff now use function sample instead of wle.riunif.
+
+Version 0.7-3, 2002/06/24
+Replace all the underscore (_) with <-.
+
+Version 0.7-2, 2002/04/02
+Fixed the documentation (.Rd) file for *.summaries.Rd file. Include a preliminary version of the wle.fracdiff function with related functions. The R^2-adjusted is now evaluated according to the sum of the weights instead of the number of observations.
+
+Version 0.7-1, 2002/03/25
+Fixed a bugs in wle.weights. Now it works also when location=FALSE
+Fixed the problems in print.summary.wle.lm.root with formatC
+
+Version 0.7, 2002/01/02 
+Fixed the 56th observation in Hawkins, Bradu, Kass dataset. Fix a bugs in the wle.cv introduced in Version 0.6 and 0.6-1 of the package. Rewrite some parts of wleregfix subroutine (for wle.lm function and wle.aic, wle.cp, wle.cv and in some others functions). Delete all .Alias calls. Preliminary version of wle.ar.
+
+Version 0.6-1, 2001/09/14
+Bug fix in wle.lm and wle.var.test
+
+Version 0.6, 2001/09/05
+Most of the functions return the Pearson residuals, the smoothed model and the non parametric density estimator for each observation. I fix the definition of the SCHI2 Residual Adjustment Function. It is added a preliminary version of a function for the parameter estimation in a univariate normal mixture models.  
+
+Version 0.5, 2001/05/20
+Only minor changes, and minor bug fix.
+
+Version 0.4, 2001/03/02
+
+It is added the following functions: wle.binomial, wle.poisson, wle.gamma, wle.t.test and wle.var.test
+
+Version 0.3, 2000/12/20
+
+Now, all the functions (that needs it) use formula, summary and print functions are provided for about all functions. The R code is clean up and some bugs in the fortran code are fixed: one in wlestepwise.f and others in wleregfix.f, wlenorm.f and wlenormalmulti.f. The package use class.  
+
+Version 0.2, 1999/12/25
+
+It is added the following functions: wle.onestep, wle.cp, wle.aic, wle.cv, wle.stepwise, wle.normal.multi, plot.wle.lm, plot.wle.cp and some other functions for classical model selection such as mle.cp, mle.aic, mle.cv and plot.mle.cp. All the function related are documented and some examples and datasets are provided. The error report system from the fortran routine code is set up but not working yet.
+
+Version 0.1, 1998/12/01
+
+This is a small experimental library with only some functions, i.e., wle.normal, wle.smooth and wle.lm, not completly working. No documentation is provided.
+
+
+Claudio Agostinelli <claudio@unive.it>

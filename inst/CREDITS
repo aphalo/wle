@@ -1,0 +1,11 @@
+Some of the source files are not written by the author of this package. This is a complete list of these files:
+
+dqelg.f     j4save.f    xermax.f     dqagp.f
+dqk15i.f    lsame.f     xermsg.f     xerdmp.f
+dqk21.f      xerprn.f    dqpsrt.f    xerhlt.f
+xersve.f     fdump.f     xgetf.f     dgeco.f      
+xgetua.f     dgedi.f     xgetun.f    dgefa.f      
+dqagie.f     xerclr.f    dqagi.f     initds.f    
+xercnt.f     dqagpe.f             
+
+These files are from the library SLATEC Common Mathematical Library (Some are originally from LINPACK or QUADPACK). You can find the complete libraries at www.netlib.org.

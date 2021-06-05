@@ -1,0 +1,320 @@
+useDynLib(wle, .registration = TRUE)
+
+#Import declaration
+import(circular)
+importFrom(stats, weights)
+importFrom(stats, effects)
+importFrom(stats, family)
+##importFrom(boot, boot)
+##importFrom(boot, basic.ci)
+##importFrom(boot, perc.ci)
+##importFrom(boot, norm.ci)
+
+importFrom("grDevices", "dev.interactive")
+importFrom("graphics", "abline", "lines", "par", "plot", "strheight",
+  "strwidth", "text")
+importFrom("stats", ".getXlevels", "approx", "approxfun", "as.ts",
+  "binomial", "coef", "complete.cases", "contrasts", "cov",
+  "dbinom", "density", "dist", "dnbinom", "dnorm", "dpois",
+  "end", "fft", "formula", "frequency", "gaussian",
+  "glm.control", "glm.fit", "is.empty.model", "lm", "median",
+  "model.extract", "model.matrix", "model.offset",
+  "model.response", "model.weights", "na.fail", "na.omit",
+  "naprint", "naresid", "optim", "optimize", "pbeta", "pf",
+  "pnbinom", "pnorm", "predict.glm", "printCoefmat", "pt",
+  "punif", "qf", "qnorm", "qqline", "qqnorm", "qt",
+  "quantile", "rbinom", "residuals", "runif", "start",
+  "stat.anova", "symnum", "terms", "ts", "tsp", "tsp<-",
+  "uniroot")
+  importFrom("utils", "write.table")
+
+#Export declaration
+
+# functions
+export(
+# file anova.wle.glm.R
+ anova.wle.glm.root,
+# file binary.R
+ binary,
+# extractRoot.R
+ extractRoot,
+ extractRoot.wle.glm,
+# mde.vonmises.R
+ mde.vonmises,
+# mde.wrappednormal.R
+ mde.wrappednormal,
+# file mle.aic.R
+ mle.aic,
+# file mle.cp.R
+ mle.cp,
+# file mle.cv.R
+ mle.cv,
+# file mle.cv.robust.bootstrap.R
+# mle.cv.rb,
+# file mle.inversegaussian.R
+# mle.inversegaussian,
+# file mle.stepwise.R
+ mle.stepwise,
+# file residualsAnscombe.R
+ residualsAnscombe,
+# file wle.aic.ar.R
+ wle.aic.ar,
+# file wle.aic.R
+ wle.aic,
+# file wle.aicfast.R
+# wle.aicfast,
+# file wle.ar.R
+ wle.ar,
+# wle.binomial.R
+ wle.binomial,
+# wle.boot.R
+# wle.boot,
+# wle.boot.ci.R
+# wle.boot.ci,
+# file wle.clm.R
+# wle.clm,
+# wle.clm.control,
+# summary.wle.clm,
+# file wle.cp.R
+ wle.cp,
+# file wle.cv.R
+ wle.cv,
+# file wle.fracdiff.R
+ wle.fracdiff,
+# file wle.gamma.R
+ wle.gamma,
+# file wle.glm.R
+ wle.glm,
+ wle.glm.fit,
+ wle.glm.weights,
+## effects.wle.glm,
+# file wle.inversegaussian.R
+# wle.inversegaussian,
+# file wle.control.R
+## wle.lm.control,
+ wle.glm.control,
+# wle.sur.control,
+# file wle.lm.R
+ wle.lm,
+# file wle.negativebinomial.R
+ wle.negativebinomial,
+# file wle.normal.mixture.R
+ wle.normal.mixture,
+# file wle.normal.high.R
+# wle.normal.high,
+# file wle.normal.multi.R
+ wle.normal.multi,
+# file wle.normal.R
+ wle.normal,
+# file wle.onestep.R
+ wle.onestep,
+# file wle.poisson.R
+ wle.poisson,
+# file wle.smooth.R
+ wle.smooth,
+# file wle.sur.R
+# wle.sur,
+# file wle.stepwise.R
+ wle.stepwise,
+# file wle.t.test.R
+ wle.t.test,
+# file wle.var.test.R
+ wle.var.test,
+# file wle.vonmises.R
+ wle.vonmises,
+# file wle.weights.R
+ wle.weights,
+# file wle.wrappednormal.R
+ wle.wrappednormal
+# file
+# weights.wle.lm
+# file wmme.gamma.R
+#### wmme.gamma,
+# file mme.gamma.R
+#### mme.gamma,
+# file wle.cv.robust.bootstrap.R
+# wle.cv.rb,
+# wle.cv.rb.m,
+# wle.cv.rb.mc
+# file wle.cv.one.R
+### wle.cv.one
+)
+
+# unexported functions
+#export(
+# file mle.cv.one.R
+# mle.cv.one,
+# file wle.aic.ar.R
+# wle.ar.wls,
+# file wle.ar.R
+# wle.ar.ao, wle.ar.step, wle.ar.matrix, wle.ar.start,
+# file wle.fracdiff.R
+# wle.crossover.ao, wle.mutation.ao, wle.selection.ao,
+#       wle.fitness.population.ao, wle.generate.population.ao,
+#       wle.ga.ao,wle.fitness.scale.ao, wle.encode.ao, wle.decode.ao,
+#       wle.fitness.ao, wle.fracdiff.ao,
+# file wle.normal.mixture.start.R
+# wle.normal.mixture.start
+#)
+
+# unexported methods
+# export(
+# file mle.aic.R
+# summary.mle.aic, print.mle.aic, print.summary.mle.aic,
+# file mle.cp.R
+# summary.mle.cp, print.mle.cp, print.summary.mle.cp,
+# file mle.cv.R
+# summary.mle.cv, print.mle.cv, print.summary.mle.cv,
+# file mle.stepwise.R
+# summary.mle.stepwise, print.mle.stepwise, print.summary.mle.stepwise,
+# file plot.mle.cp.R
+# plot.mle.cp,
+# file plot.wle.cp.R
+# plot.wle.cp,
+# file plot.wle.lm.R
+# plot.wle.lm,
+# file wle.aic.ar.R
+# summary.wle.aic.ar, print.wle.aic.ar, print.summary.wle.aic.ar,
+# file wle.aic.R
+# summary.wle.aic, print.wle.aic, print.summary.wle.aic,
+# file wle.binomial.R
+# print.wle.binomial,
+# file wle.cp.R
+# summary.wle.cp, print.wle.cp, print.summary.wle.cp,      # file wle.cv.R
+# summary.wle.cv, print.wle.cv, print.summary.wle.cv,
+# file wle.gamma.R
+# print.wle.gamma,
+# file wle.lm.R
+# print.wle.lm, summary.wle.lm, print.summary.wle.lm,
+# summary.wle.lm.root, print.summary.wle.lm.root, fitted.wle.lm,
+# coef.wle.lm,
+# formula.wle.lm, model.frame.wle.lm,
+# file wle.normal.mixture.R
+# print.wle.normal.mixture,
+# file wle.normal.multi.R
+# print.wle.normal.multi,
+# file wle.normal.R
+# print.wle.normal,
+# file wle.onestep.R
+# print.wle.onestep,
+# file wle.poisson.R
+# print.wle.poisson,
+# file wle.smooth.R
+# print.wle.smooth,
+# file wle.stepwise.R
+# summary.wle.stepwise, print.wle.stepwise, print.summary.wle.stepwise,
+# file wle.t.test.R
+# print.wle.t.test,
+# file wle.vonmises.R
+# print.wle.vonmises,
+# file wle.wrappednormal.R
+# print.wle.wrappednormal
+#)
+
+#S3method declaration
+
+#anova
+S3method(anova, wle.glm.root)
+
+#coef
+S3method(coef, wle.lm)
+S3method(coef, wle.glm)
+
+#deviance
+S3method(deviance, wle.glm)
+
+#effects
+S3method(effects, wle.glm)
+
+#extractRoot
+S3method(extractRoot, wle.glm)
+
+#family
+S3method(family, wle.glm)
+
+#fitted
+S3method(fitted, wle.lm)
+S3method(fitted, wle.glm)
+
+#formula
+S3method(formula, wle.lm)
+S3method(formula, wle.glm)
+
+#model.frame
+S3method(model.frame, wle.lm)
+S3method(model.frame, wle.glm)
+
+#plot
+S3method(plot, mle.cp)
+S3method(plot, wle.cp)
+S3method(plot, wle.lm)
+
+#print
+S3method(print, summary.mle.aic)
+S3method(print, mle.cp)
+S3method(print, summary.mle.cp)
+S3method(print, mle.cv)
+S3method(print, summary.mle.cv)
+S3method(print, mle.stepwise)
+S3method(print, summary.mle.stepwise)
+S3method(print, wle.aic.ar)
+S3method(print, summary.wle.aic.ar)
+S3method(print, wle.aic)
+S3method(print, summary.wle.aic)
+S3method(print, wle.binomial)
+S3method(print, wle.cp)
+S3method(print, summary.wle.cp)
+S3method(print, wle.cv)
+S3method(print, summary.wle.cv)
+S3method(print, wle.gamma)
+#S3method(print, wle.inversegaussian)
+#S3method(print, mle.inversegaussian)
+S3method(print, wle.stepwise)
+S3method(print, summary.wle.stepwise)
+S3method(print, wle.lm)
+S3method(print, summary.wle.lm)
+S3method(print, summary.wle.lm.root)
+S3method(print, wle.normal.mixture)
+#S3method(print, wle.normal.high)
+S3method(print, wle.normal.multi)
+S3method(print, wle.normal)
+S3method(print, wle.onestep)
+S3method(print, wle.poisson)
+S3method(print, wle.smooth)
+S3method(print, wle.t.test)
+S3method(print, wle.vonmises)
+S3method(print, wle.wrappednormal)
+S3method(print, mde.vonmises)
+S3method(print, mde.wrappednormal)
+S3method(print, wmme.gamma)
+S3method(print, mme.gamma)
+S3method(print, wle.glm)
+S3method(print, wle.glm.root)
+S3method(print, summary.wle.glm)
+#S3method(print, wle.boot)
+#residuals
+S3method(residuals, wle.glm)
+#S3method(print, summary.wle.clm)
+
+
+#summary
+S3method(summary, mle.aic)
+S3method(summary, mle.cp)
+S3method(summary, mle.cv)
+S3method(summary, mle.stepwise)
+S3method(summary, wle.aic.ar)
+S3method(summary, wle.aic)
+S3method(summary, wle.cp)
+S3method(summary, wle.cv)
+S3method(summary, wle.stepwise)
+S3method(summary, wle.lm)
+S3method(summary, wle.lm.root)
+S3method(summary, wle.glm)
+S3method(summary, wle.glm.root)
+###S3method(summary, wle.clm)
+###S3method(summary, wle.clm.root)
+
+# weights
+S3method(weights, wle.lm)
+S3method(weights, wle.glm)
+###S3method(weights, wle.clm)
